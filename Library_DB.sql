@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS Student_t;
 DROP TABLE IF EXISTS Study_Room_t;
+DROP TABLE IF EXISTS Student_t;
 DROP TABLE IF EXISTS Media_t;
 DROP TABLE IF EXISTS Event_t;
 DROP TABLE IF EXISTS Transaction_t;
@@ -52,15 +52,6 @@ CREATE TABLE Media_t (
 CONSTRAINT Media_PK PRIMARY KEY (Media_ID)
 );
 
-CREATE TABLE Study_Room_t (
-	Study_Room_ID	VARCHAR(20),
-	Student_ID 		VARCHAR(20),
-	room_Numbers	VARCHAR(20),
-	Time_Set		INT,
-CONSTRAINT Study_Room_PK PRIMARY KEY (Study_Room_ID),
-CONSTRAINT Study_Room_FK1 FOREIGN KEY (Student_ID) REFERENCES Student_t(Student_ID)
-);
-
 CREATE TABLE Student_t (
 	Student_ID 		VARCHAR(20),
 	User_Name		TEXT,
@@ -70,4 +61,13 @@ CREATE TABLE Student_t (
 	Return_Date		VARCHAR(20),
 	Student_Name	TEXT,
 CONSTRAINT Student_PK PRIMARY KEY (Student_ID)
+);
+
+CREATE TABLE Study_Room_t (
+	Study_Room_ID	VARCHAR(20),
+	Student_ID 		VARCHAR(20),
+	room_Numbers	VARCHAR(20),
+	Time_Set		INT,
+CONSTRAINT Study_Room_PK PRIMARY KEY (Study_Room_ID),
+CONSTRAINT Study_Room_FK1 FOREIGN KEY (Student_ID) REFERENCES Student_t(Student_ID)
 );
