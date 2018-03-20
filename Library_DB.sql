@@ -4,10 +4,10 @@ DROP TABLE IF EXISTS Media_t;
 DROP TABLE IF EXISTS Event_t;
 DROP TABLE IF EXISTS Transaction_t;
 DROP TABLE IF EXISTS Book_t;
-DROP TABLE IF EXISTS Staff_t;
+DROP TABLE IF EXISTS Staff_0;
 
 
-CREATE TABLE Staff_t (
+CREATE TABLE Staff_0 (
 	Staff_ID		VARCHAR(10),
 	User_Name		VARCHAR(20),
 	Password		VARCHAR(20),
@@ -16,7 +16,15 @@ CREATE TABLE Staff_t (
 CONSTRAINT Staff_PK PRIMARY KEY (Staff_ID)
 );
 
-CREATE TABLE Book_t (
+CREATE TABLE Staff_1 (
+	Staff_ID		VARCHAR(10),
+	Book_ID			VARCHAR(30),
+CONSTRAINT Staff_PK PRIMARY KEY (Staff_ID, Book_ID),
+CONSTRAINT Staff_FK FOREIGN KEY (Staff_ID) REFERENCES Staff_0(Staff_ID),
+CONSTRAINT Staff_FK FOREIGN KEY (Book_ID) REFERENCES Book(Book_ID)
+);
+
+CREATE TABLE Book (
 	Book_ID			VARCHAR(20),
 	Author			VARCHAR(20),
 	ISBN 			VARCHAR(20),
@@ -25,7 +33,7 @@ CREATE TABLE Book_t (
 CONSTRAINT Book_PK PRIMARY KEY (Book_ID)
 );
 
-CREATE TABLE Transaction_t (
+CREATE TABLE Transaction (
 	Transaction_ID		VARCHAR(20),
 	Item_Out			VARCHAR(20),
 	Who_Checked_Out 	VARCHAR(20),
@@ -34,7 +42,7 @@ CREATE TABLE Transaction_t (
 CONSTRAINT Transaction_PK PRIMARY KEY (Transaction_ID)
 );
 
-CREATE TABLE Event_t (
+CREATE TABLE Event (
 	Event_ID 				VARCHAR(20),
 	Exhibits_On_Display		VARCHAR(20),
 	Owner_Of_Exhibit 		VARCHAR(20),
@@ -45,14 +53,14 @@ CREATE TABLE Event_t (
 CONSTRAINT Event_PK PRIMARY KEY (Event_ID)
 );
 
-CREATE TABLE Media_t (
+CREATE TABLE Media (
 	Media_ID 		VARCHAR(20),
 	Media_Name		TEXT,
 	Holds			TEXT,
 CONSTRAINT Media_PK PRIMARY KEY (Media_ID)
 );
 
-CREATE TABLE Student_t (
+CREATE TABLE Student (
 	Student_ID 		VARCHAR(20),
 	User_Name		TEXT,
 	Password 		VARCHAR(20),
@@ -63,7 +71,7 @@ CREATE TABLE Student_t (
 CONSTRAINT Student_PK PRIMARY KEY (Student_ID)
 );
 
-CREATE TABLE Study_Room_t (
+CREATE TABLE Study_Room (
 	Study_Room_ID	VARCHAR(20),
 	Student_ID 		VARCHAR(20),
 	room_Numbers	VARCHAR(20),
