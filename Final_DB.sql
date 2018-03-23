@@ -17,54 +17,54 @@ DROP TABLE IF EXISTS Staff_t;
 
 -- Start of main tables
 CREATE TABLE Staff_t (
-    Staff_Id		VARCHAR(10),
+  Staff_Id		VARCHAR(10),
 	Username		VARCHAR(20),
 	Password		VARCHAR(20),
-	Email			VARCHAR(20),
-	Role			VARCHAR(20),
+	Email			  VARCHAR(20),
+	Role			  VARCHAR(20),
 CONSTRAINT Staff_PK PRIMARY KEY (Staff_Id)
 );
 
 CREATE TABLE Book_t (
 	Book_ID		    VARCHAR(50),
-	Author			VARCHAR(20),
-	ISBN 			VARCHAR(20),
-	Cataloged		VARCHAR(20),
-	Holds			VARCHAR(20),
+	Author			  VARCHAR(20),
+	ISBN 			    VARCHAR(20),
+	Cataloged		  VARCHAR(20),
+	Holds			    VARCHAR(20),
 CONSTRAINT Book_t_PK PRIMARY KEY (Book_ID)
 );
 
 CREATE TABLE Transaction_t (
-	Transaction_ID	    VARCHAR(20),
-	Item_Out			VARCHAR(20),
+	Transaction_ID	  VARCHAR(20),
+	Item_Out			    VARCHAR(20),
 	Who_Checked_Out 	VARCHAR(20),
 	When_Checked_Out 	VARCHAR(20),
-	Return_Date 		VARCHAR(20),
+	Return_Date 		  VARCHAR(20),
 CONSTRAINT Transaction_t_PK PRIMARY KEY (Transaction_ID)
 );
 
 CREATE TABLE Media_t (
-	Media_ID 		VARCHAR(20),
+	Media_ID 		    VARCHAR(20),
 	Media_Type	    VARCHAR(20),
-	Holds			VARCHAR(20),
+	Holds			      VARCHAR(20),
 CONSTRAINT Media_t_PK PRIMARY KEY (Media_ID)
 );
 
 CREATE TABLE Event_t (
-	Event_ID 				VARCHAR(20),
+	Event_ID 				      VARCHAR(20),
 	Exhibits_On_Display		VARCHAR(20),
-	Owner_Of_Exhibit 		VARCHAR(20),
-	Start_Date				VARCHAR(20),
-	End_Date 				VARCHAR(20),
-	Owner_Email 			VARCHAR(20),
-	Phone_Number			VARCHAR(20),
+	Owner_Of_Exhibit 		  VARCHAR(20),
+	Start_Date				    VARCHAR(20),
+	End_Date 				      VARCHAR(20),
+	Owner_Email 			    VARCHAR(20),
+	Phone_Number			    VARCHAR(20),
 CONSTRAINT Event_t_PK PRIMARY KEY (Event_ID)
 );
 
 CREATE TABLE Student_t (
-	Student_ID 	       VARCHAR(20),
+	Student_ID 	     VARCHAR(20),
 	Username	       VARCHAR(20),
-	Password 		   VARCHAR(20),
+	Password 		     VARCHAR(20),
 	Student_Email	   VARCHAR(20),
 	Item_Borrowed	   VARCHAR(20),
 	Return_Date		   VARCHAR(20),
@@ -73,9 +73,9 @@ CONSTRAINT Student_t_PK PRIMARY KEY (Student_ID)
 );
 
 CREATE TABLE studyRoom_t (
-	studyRoom_ID	VARCHAR(20),
+	studyRoom_ID	  VARCHAR(20),
 	Student_ID 	    VARCHAR(20),
-	timeRequested	VARCHAR(20),
+	timeRequested	  VARCHAR(20),
 CONSTRAINT studyRoom_t_PK PRIMARY KEY (studyRoom_ID),
 CONSTRAINT studyRoom_t_FK1 FOREIGN KEY (Student_ID) REFERENCES Student_t(Student_ID)
 );
