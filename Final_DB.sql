@@ -8,16 +8,15 @@ DROP TABLE IF EXISTS transactionMedia_t;
 DROP TABLE IF EXISTS bookTransaction_t;
 DROP TABLE IF EXISTS studyRoom_t;
 DROP TABLE IF EXISTS Student_t;
-DROP TABLE IF EXISTS Media_t;
 DROP TABLE IF EXISTS Event_t;
+DROP TABLE IF EXISTS Media_t;
 DROP TABLE IF EXISTS Transaction_t;
 DROP TABLE IF EXISTS Book_t;
-DROP TABLE IF EXISTS Staff_1;
 DROP TABLE IF EXISTS Staff_t;
 
 -- Start of main tables
 CREATE TABLE Staff_t (
-  Staff_Id		VARCHAR(10),
+  Staff_Id		VARCHAR(20),
 	Username		VARCHAR(20),
 	Password		VARCHAR(20),
 	Email			  VARCHAR(20),
@@ -26,7 +25,7 @@ CONSTRAINT Staff_PK PRIMARY KEY (Staff_Id)
 );
 
 CREATE TABLE Book_t (
-	Book_ID		    VARCHAR(50),
+	Book_ID		    VARCHAR(20),
 	Author			  VARCHAR(20),
 	ISBN 			    VARCHAR(20),
 	Cataloged		  VARCHAR(20),
@@ -83,14 +82,14 @@ CONSTRAINT studyRoom_t_FK1 FOREIGN KEY (Student_ID) REFERENCES Student_t(Student
 
 -- Start of mini-tables
 CREATE TABLE bookTransaction_t (
-  Book_ID			VARCHAR(50),
+  Book_ID			    VARCHAR(20),
   Transaction_ID  VARCHAR(20),
-CONSTRAINT bookTransaction_t_PK PRIMARY KEY (Book_t_Id),
+CONSTRAINT bookTransaction_t_PK PRIMARY KEY (Book_ID),
 CONSTRAINT bookTransaction_t_PK PRIMARY KEY (Transaction_ID)
 );
 
 CREATE TABLE transactionMedia_t (
-  Media_ID			VARCHAR(20),
+  Media_ID			      VARCHAR(20),
   Transaction_ID      VARCHAR(20),
 CONSTRAINT transactionMedia_t_PK PRIMARY KEY (Media_ID),
 CONSTRAINT transactionMedia_t_PK PRIMARY KEY (Transaction_ID)
@@ -104,35 +103,35 @@ CONSTRAINT studentTransaction_t_PK PRIMARY KEY (Transaction_ID)
 );
 
 CREATE TABLE staffTransaction_t (
-  Staff_Id			   VARCHAR(20),
+  Staff_Id			     VARCHAR(20),
   Transaction_ID     VARCHAR(20),
 CONSTRAINT bookTransaction_t_PK PRIMARY KEY (Staff_Id),
 CONSTRAINT bookTransaction_t_PK PRIMARY KEY (Transaction_ID)
 );
 
 CREATE TABLE staffStudyRoom (
-  Staff_Id			VARCHAR(20),
+  Staff_Id			   VARCHAR(20),
   studyRoom_ID     VARCHAR(20),
 CONSTRAINT staffStudyRoom_PK PRIMARY KEY (Staff_Id),
 CONSTRAINT staffStudyRoom_PK PRIMARY KEY (studyRoom_ID)
 );
 
 CREATE TABLE Staff_ID_2 (
-	Staff_ID		VARCHAR(20),
+	Staff_ID		  VARCHAR(20),
 	Event_t_ID		VARCHAR(20),
 CONSTRAINT Staff_ID_2_PK PRIMARY KEY (Staff_ID),
 CONSTRAINT Staff_ID_2_Event_t_FK FOREIGN KEY (Event_t_ID) REFERENCES Event_t(Event_t_ID)
 );
 
 CREATE TABLE Staff_ID_1 (
-	Staff_ID		VARCHAR(20),
+	Staff_ID		  VARCHAR(20),
 	Media_t_ID		VARCHAR(20),
 CONSTRAINT Staff_ID_1_PK PRIMARY KEY (Staff_ID),
 CONSTRAINT Staff_ID_1_Media_t_FK FOREIGN KEY (Media_t_ID) REFERENCES Media_t(Media_t_ID)
 );
 
 CREATE TABLE Staff_ID_0 (
-	Staff_ID		VARCHAR(20),
+	Staff_ID		  VARCHAR(20),
 	Student_t_ID	VARCHAR(20),
 CONSTRAINT Staff_ID_0_PK PRIMARY KEY (Staff_ID),
 CONSTRAINT Staff_ID_0_Student_t_FK FOREIGN KEY (Student_t_ID) REFERENCES Student_t(Student_t_ID)
