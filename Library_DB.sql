@@ -124,14 +124,14 @@ CONSTRAINT Staff_ID_2_Event_FK FOREIGN KEY (Event_ID) REFERENCES Event_t(Event_I
 );
 
 CREATE TABLE Staff_ID_1 (
-	Staff_ID       VARCHAR(50),
+	Staff_ID     VARCHAR(50),
 	Media_ID     VARCHAR(50),
 CONSTRAINT Staff_ID_1_PK PRIMARY KEY (Staff_ID),
 CONSTRAINT Staff_ID_1_Media_FK FOREIGN KEY (Media_ID) REFERENCES Media_t(Media_ID)
 );
 
 CREATE TABLE Staff_ID_0 (
-	Staff_ID       VARCHAR(50),
+	Staff_ID     VARCHAR(50),
 	Student_ID   VARCHAR(50),
 CONSTRAINT Staff_ID_0_PK PRIMARY KEY (Staff_ID),
 CONSTRAINT Staff_ID_0_Student_FK FOREIGN KEY (Student_ID) REFERENCES Student_t(Student_ID)
